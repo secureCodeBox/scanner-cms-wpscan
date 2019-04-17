@@ -1,35 +1,32 @@
-FROM ruby:latest
+FROM ruby:alpine
 
 WORKDIR /sectools
 ADD Gemfile /sectools
 ADD Gemfile.lock /sectools
 
-# required for ssh-keyscan
-RUN apk --update add openssh-client && apk --update add bash
+RUN apk --update add bash
 
-RUN gem install wpscan bundler
-
-RUN apk --update add --virtual build-dependencies ruby-dev build-base && \
-    bundle install && \
+RUN apk --update add --virtual build-dependencies ruby-dev build-base &&\
+    gem install wpscan bundler &&\
+    bundle install &&\
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
 
-COPY . /wordpress_scan
-
+COPY . /wpscan
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=3 CMD curl --fail http://localhost:8080/status || exit 1
 
 COPY src/ src/
 COPY lib/ lib/
 
-RUN addgroup --system ssh && \
-    adduser --system ssh
+RUN addgroup --system wpscan && \
+    adduser --system wpscan
 
 RUN chgrp -R 0 /sectools/ && \
     chmod -R g=u /sectools/ && \
-    chown -R ssh /sectools/
+    chown -R wpscan /sectools/
 
-USER ssh
+USER wpscan
 
 EXPOSE 8080
 

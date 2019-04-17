@@ -7,24 +7,15 @@ end
 
 class WordpressConfiguration
   attr_accessor :job_id
-  attr_accessor :policies_directory
-  attr_accessor :ssh_policy_file
-  attr_accessor :ssh_timeout_seconds
+  attr_accessor :wordpress_scanner_target
+  attr_accessor :wordpress_stealthy
 
-
-  def self.from_target(job_id, target, policies_directory = "/securecodebox/static/")
+  def self.from_target(job_id, target)
     config = WordpressConfiguration.new
 
-    config.policies_directory = policies_directory
     config.job_id = job_id
-    config.ssh_policy_file = target.dig('attributes','SSH_POLICY_FILE')
-    config.ssh_timeout_seconds = target.dig('attributes','SSH_TIMEOUT_SECONDS')
+    config.wordpress_scanner_target = target.dig('location')
+    config.wordpress_stealthy = '--stealthy' if target.dig('WP_STEALTHY') == 'true'
     config
-  end
-
-  def filePath
-    template_file = Pathname.new(self.ssh_policy_file)
-
-    "/#{policies_directory}/#{self.job_id}#{template_file.extname}"
   end
 end

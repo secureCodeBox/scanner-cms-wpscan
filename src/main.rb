@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'json'
 require 'rest-client'
-require_relative "./rdpress_worker"
+require_relative "./wordpress_worker"
 
 set :port, 8080
 set :bind, '0.0.0.0'
@@ -9,7 +9,7 @@ set :environment, :production
 
 client = WordpressWorker.new(
 	'http://localhost:8080',
-	'ssh_webserverscan',
+	'wordpress_webserverscan',
 	['PROCESS_TARGETS']
 )
 
