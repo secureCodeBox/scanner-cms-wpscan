@@ -4,9 +4,8 @@ WORKDIR /sectools
 ADD Gemfile /sectools
 ADD Gemfile.lock /sectools
 
-RUN apk --update add bash
-
 RUN apk --update add --virtual build-dependencies ruby-dev build-base &&\
+    apk --update add curl &&\
     gem install wpscan bundler &&\
     bundle install &&\
     apk del build-dependencies && \
@@ -52,4 +51,4 @@ LABEL org.opencontainers.image.title="secureCodeBox scanner-webserver-wordpress"
     org.opencontainers.image.revision=$COMMIT_ID \
     org.opencontainers.image.created=$BUILD_DATE
 
-ENTRYPOINT ["bash","/sectools/src/starter.sh"]
+ENTRYPOINT ["ruby","/sectools/src/main.rb"]

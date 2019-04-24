@@ -39,10 +39,10 @@ class WordpressScan
 		begin
       resultsFile = File.open("/tmp/raw-results.txt", "w+")
 
-			wordpressCommandLine = "wpscan --url #{@config.wordpress_scanner_target} -o #{Pathname.new(resultsFile)} #{@config.wordpress_stealthy}"
+			wordpressCommandLine = "wpscan --url #{@config.wordpress_scanner_target} -f json -o #{Pathname.new(resultsFile)} #{@config.wordpress_stealthy}"
 
-      resultsFile.write(`#{wordpressCommandLine}`)
-      @raw_results = JSON.parse(resultsFile.read)
+      `#{wordpressCommandLine}`
+      @raw_results = JSON.parse(JSON.parse(JSON.parse(resultsFile.read.to_s).to_s).to_s)
       File.delete(resultsFile)
     rescue => err
 			$logger.warn err

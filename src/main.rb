@@ -25,7 +25,7 @@ get '/status' do
 	{
 		started_at: client.start_time,
 		worker_id: client.worker_id,
-		healthcheck: healthcheck(client.last_connect),
+		healthcheck: healthy?(client, test_run),
 		status: {
 			started: client.started_tasks,
 			completed: client.completed_tasks,
