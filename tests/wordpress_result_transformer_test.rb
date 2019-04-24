@@ -15,57 +15,44 @@ class SshResultTransformerTest < Test::Unit::TestCase
 
     @test_result = <<EOM
 [
-  {
-    "ssh_scan_version": "0.0.40",
-    "ip": "127.0.0.1",
-    "hostname": "localhost",
-    "port": 22,
-    "server_banner": "",
-    "ssh_version": "unknown",
-    "os": "unknown",
-    "os_cpe": "o:unknown",
-    "ssh_lib": "unknown",
-    "ssh_lib_cpe": "a:unknown",
-    "key_algorithms": [
-
-    ],
-    "encryption_algorithms_client_to_server": [
-
-    ],
-    "encryption_algorithms_server_to_client": [
-
-    ],
-    "mac_algorithms_client_to_server": [
-
-    ],
-    "mac_algorithms_server_to_client": [
-
-    ],
-    "compression_algorithms_client_to_server": [
-
-    ],
-    "compression_algorithms_server_to_client": [
-
-    ],
-    "languages_client_to_server": [
-
-    ],
-    "languages_server_to_client": [
-
-    ],
-    "auth_methods": [
-
-    ],
-    "keys": null,
-    "duplicate_host_key_ips": [
-
-    ],
-    "compliance": {
-    },
-    "start_time": "2019-03-20 14:54:36 +0100",
-    "end_time": "2019-03-20 14:54:41 +0100",
-    "scan_duration_seconds": 5.138688
-  }
+  {  
+            "banner":{  
+                "description":"WordPress Security Scanner by the WPScan Team",
+                "version":"3.5.2",
+                "authors":[  
+                    "@_WPScan_",
+                    "@ethicalhack3r",
+                    "@erwan_lr",
+                    "@_FireFart_"
+                ],
+                "sponsored_by":"Sucuri - https://sucuri.net"
+            },
+            "db_update_started":true,
+            "db_files_updated":[ 
+            ],
+            "db_update_finished":true,
+            "start_time":1553093676,
+            "start_memory":44224512,
+            "target_url":"127.0.0.1",
+            "effective_url":"127.0.0.1",
+            "interesting_findings":[ 
+            ],
+            "version":null,
+            "main_theme":{
+            },
+            "config_backups":{ 
+            },
+            "stop_time":1553093681,
+            "elapsed":11,
+            "requests_done":482,
+            "cached_requests":3,
+            "data_sent":84214,
+            "data_sent_humanised":"82.24 KB",
+            "data_received":24845623,
+            "data_received_humanised":"23.695 MB",
+            "used_memory":199913472,
+            "used_memory_humanised":"190.652 MB"
+        }
 ]
 
 EOM
@@ -79,22 +66,17 @@ EOM
         @transformer.transform(result),
         [{
             id: '49bf7fd3-8512-4d73-a28f-608e493cd726',
-            name: 'SSH Compliance',
-            description: 'SSH Compliance Information',
-            category: 'SSH Service',
+            name: 'CMS Wordpress',
+            description: 'CMS Wordpress Information',
+            category: 'CMS Wordpress',
             osi_layer: 'NETWORK',
             severity: 'INFORMATIONAL',
             reference: {},
             hint: '',
             location: '127.0.0.1',
             attributes: {
-                compliance_policy: nil,
-                compliant: nil,
-                grade: nil,
-                start_time: '2019-03-20 14:54:36 +0100',
-                end_time: '2019-03-20 14:54:41 +0100',
-                scan_duration_seconds: 5.138688,
-                references: nil
+                # start_time: '2019-03-20 15:54:36 +0100',
+                # end_time: '2019-03-20 15:54:41 +0100'
             }
         }]
     )
@@ -108,8 +90,8 @@ EOM
         @transformer.transform(result, timed_out: true),
         [{
              id: "49bf7fd3-8512-4d73-a28f-608e493cd726",
-             name: "SSH Scan timed out and could no be finished.",
-             description: "SSH Scan didnt send any new requests for 5 minutes. This probably means that ssh_scan encountered some internal errors it could not handle.",
+             name: "Wordpress Scan timed out and could no be finished.",
+             description: "Wordpress Scan didnt send any new requests for 5 minutes. This probably means that wpscan encountered some internal errors it could not handle.",
              osi_layer: 'NOT_APPLICABLE',
              severity: "MEDIUM",
              category: "ScanError",

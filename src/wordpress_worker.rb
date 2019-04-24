@@ -30,7 +30,7 @@ class WordpressWorker < CamundaWorker
 
 		{
 				findings: scans.flat_map{|scan| scan.results},
-				rawFindings: scans.map{|scan| scan.raw_results.to_json}.to_json,
+				rawFindings: scans.map{|scan| scan.raw_results},
 				scannerId: @worker_id.to_s,
 				scannerType: 'wordpress'
 		}

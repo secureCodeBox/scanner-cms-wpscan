@@ -37,12 +37,11 @@ class WordpressScan
 
 	def start_scan
 		begin
-      resultsFile = File.open("/tmp/raw-results.txt", "w+")
-
-			wordpressCommandLine = "wpscan --url #{@config.wordpress_scanner_target} -f json -o #{Pathname.new(resultsFile)} #{@config.wordpress_stealthy}"
-
+			wordpressCommandLine = "wpscan --url #{@config.wordpress_scanner_target} -f json -o /tmp/raw-results.txt #{@config.wordpress_stealthy}"
       `#{wordpressCommandLine}`
-      @raw_results = JSON.parse(JSON.parse(JSON.parse(resultsFile.read.to_s).to_s).to_s)
+
+      resultsFile = File.open("/tmp/raw-results.txt", "r+")
+      @raw_results = JSON.parse(resultsFile.read)
       File.delete(resultsFile)
     rescue => err
 			$logger.warn err
