@@ -37,7 +37,7 @@ class WordpressScan
 
 	def start_scan
 		begin
-			wordpressCommandLine = "wpscan --url #{@config.wordpress_scanner_target} -f json -o /tmp/raw-results.txt #{@config.wordpress_stealthy}"
+			wordpressCommandLine = "wpscan --url #{@config.wordpress_scanner_target} -f json -o /tmp/raw-results.txt #{@config.wordpress_configuration}"
       `#{wordpressCommandLine}`
 
       resultsFile = File.open("/tmp/raw-results.txt", "r+")
@@ -45,7 +45,7 @@ class WordpressScan
       File.delete(resultsFile)
     rescue => err
 			$logger.warn err
-			raise CamundaIncident.new("Failed to start Wordpress scan.", "This is most likely related to a error in the configuration. Check the SSH logs for more details.")
+			raise CamundaIncident.new("Failed to start Wordpress scan.", "This is most likely related to a error in the configuration. Check the WPScan logs for more details.")
 		end
 	end
 

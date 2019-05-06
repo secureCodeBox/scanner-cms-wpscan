@@ -16,32 +16,19 @@ class SshResultTransformerTest < Test::Unit::TestCase
     @test_result = <<EOM
 [
   {  
-            "banner":{  
-                "description":"WordPress Security Scanner by the WPScan Team",
-                "version":"3.5.2",
-                "authors":[  
-                    "@_WPScan_",
-                    "@ethicalhack3r",
-                    "@erwan_lr",
-                    "@_FireFart_"
-                ],
-                "sponsored_by":"Sucuri - https://sucuri.net"
-            },
-            "db_update_started":true,
-            "db_files_updated":[ 
-            ],
-            "db_update_finished":true,
+            "banner": null,
+            "db_update_started": null,
+            "db_files_updated": null,
+            "db_update_finished": null,
             "start_time":1553093676,
             "start_memory":44224512,
             "target_url":"127.0.0.1",
             "effective_url":"127.0.0.1",
-            "interesting_findings":[ 
-            ],
-            "version":null,
-            "main_theme":{
-            },
-            "config_backups":{ 
-            },
+            "interesting_findings": null,
+            "version": null,
+            "main_theme": null,
+            "config_backups": null,
+            "plugins": null,
             "stop_time":1553093681,
             "elapsed":11,
             "requests_done":482,
@@ -75,8 +62,11 @@ EOM
             hint: '',
             location: '127.0.0.1',
             attributes: {
-                # start_time: '2019-03-20 15:54:36 +0100',
-                # end_time: '2019-03-20 15:54:41 +0100'
+                requests_done: "482",
+                db_update_finished: "",
+                version: "",
+                start_time: '2019-03-20 15:54:36 +0100',
+                end_time: '2019-03-20 15:54:41 +0100'
             }
         }]
     )
