@@ -8,39 +8,37 @@ class FakeUuidProvider
   end
 end
 
-class SshResultTransformerTest < Test::Unit::TestCase
+class WordpressResultTransformerTest < Test::Unit::TestCase
 
   def setup
     @transformer = WordpressResultTransformer.new(FakeUuidProvider.new)
 
     @test_result = <<EOM
-[
-  {  
-            "banner": null,
-            "db_update_started": null,
-            "db_files_updated": null,
-            "db_update_finished": null,
-            "start_time":1553093676,
-            "start_memory":44224512,
-            "target_url":"127.0.0.1",
-            "effective_url":"127.0.0.1",
-            "interesting_findings": null,
-            "version": null,
-            "main_theme": null,
-            "config_backups": null,
-            "plugins": null,
-            "stop_time":1553093681,
-            "elapsed":11,
-            "requests_done":482,
-            "cached_requests":3,
-            "data_sent":84214,
-            "data_sent_humanised":"82.24 KB",
-            "data_received":24845623,
-            "data_received_humanised":"23.695 MB",
-            "used_memory":199913472,
-            "used_memory_humanised":"190.652 MB"
-        }
-]
+{  
+  "banner": null,
+  "db_update_started": null,
+  "db_files_updated": null,
+  "db_update_finished": null,
+  "start_time":1553093676,
+  "start_memory":44224512,
+  "target_url":"127.0.0.1",
+  "effective_url":"127.0.0.1",
+  "interesting_findings": null,
+  "version": null,
+  "main_theme": null,
+  "config_backups": null,
+  "plugins": null,
+  "stop_time":1553093681,
+  "elapsed":11,
+  "requests_done":482,
+  "cached_requests":3,
+  "data_sent":84214,
+  "data_sent_humanised":"82.24 KB",
+  "data_received":24845623,
+  "data_received_humanised":"23.695 MB",
+  "used_memory":199913472,
+  "used_memory_humanised":"190.652 MB"
+}
 
 EOM
   end
