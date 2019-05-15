@@ -32,18 +32,11 @@ class WordpressResultTransformer
     unless r.dig('version').nil? or r.dig('version').empty?
       vulnerabilitiesToFindings(r.dig('version', 'vulnerabilities'), 'HIGH') unless r.dig('version', 'vulnerabilities').nil? or r.dig('version', 'vulnerabilities').empty?
     end
-    if r.dig('main_theme','version').nil? or r.dig('main_theme','version').empty?
-      vulnerabilitiesToFindings(r.dig('main_theme', 'vulnerabilities'), 'INFORMATIONAL') unless r.dig('main_theme', 'vulnerabilities').nil? or r.dig('main_theme', 'vulnerabilities').empty?
-    else
-      vulnerabilitiesToFindings(r.dig('main_theme', 'version', 'vulnerabilities'),'HIGH') unless r.dig('main_theme', 'version', 'vulnerabilities').nil? or r.dig('main_theme', 'version', 'vulnerabilities').empty?
-    end
+    vulnerabilitiesToFindings(r.dig('main_theme', 'vulnerabilities'), 'INFORMATIONAL') unless r.dig('main_theme', 'vulnerabilities').nil? or r.dig('main_theme', 'vulnerabilities').empty?
+
     unless r.dig('plugins').nil? or r.dig('plugins').empty?
       r.dig('plugins').each do |p|
-        if p[1].dig('version').nil? or p[1].dig('version').empty?
             vulnerabilitiesToFindings(p[1].dig('vulnerabilities'), 'INFORMATIONAL') unless p[1].dig('vulnerabilities').nil? or p[1].dig('vulnerabilities').empty?
-          else
-            vulnerabilitiesToFindings(p[1].dig('version', 'vulnerabilities'), 'HIGH') unless p[1].dig('version', 'vulnerabilities').nil? or p[1].dig('version', 'vulnerabilities').empty?
-          end
       end
     end
 
