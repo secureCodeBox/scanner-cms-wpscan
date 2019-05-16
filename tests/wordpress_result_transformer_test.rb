@@ -70,23 +70,4 @@ EOM
         }]
     )
   end
-
-  def test_add_a_timed_out_finding_when_optional_parameter_is_passed
-
-    result = JSON.parse(@test_result)
-
-    assert_equal(
-        @transformer.transform(result, timed_out: true),
-        [{
-             id: "49bf7fd3-8512-4d73-a28f-608e493cd726",
-             name: "Wordpress Scan timed out and could no be finished.",
-             description: "Wordpress Scan didnt send any new requests for 5 minutes. This probably means that wpscan encountered some internal errors it could not handle.",
-             osi_layer: 'NOT_APPLICABLE',
-             severity: "MEDIUM",
-             category: "ScanError",
-             hint: "This could be related to a misconfiguration.",
-             attributes: {}
-         }]
-    )
-  end
 end
