@@ -7,9 +7,6 @@ require_relative './wordpress_result_transformer'
 
 $logger = Logger.new(STDOUT)
 
-class ScanTimeOutError < StandardError
-
-end
 
 class WordpressScan
 	attr_reader :raw_results
