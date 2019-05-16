@@ -43,7 +43,7 @@ class WordpressScan
 		end
 	end
 
-	def get_scan_report()
+	def get_scan_report
 		begin
 			@results = @transformer.transform(@raw_results)
 		rescue => err
