@@ -25,8 +25,8 @@ class WordpressResultTransformer
             requests_done: r.dig('requests_done').to_s,
             db_update_finished: r.dig('db_update_finished').to_s,
             version: r.dig('version', 'number').to_s,
-            start_time: Time.at(r.dig('start_time')).to_s,
-            end_time: Time.at(r.dig('stop_time')).to_s
+            start_time: Time.at(r.dig('start_time')),
+            end_time: Time.at(r.dig('stop_time'))
         }
     }
     unless r.dig('version').nil? or r.dig('version').empty?

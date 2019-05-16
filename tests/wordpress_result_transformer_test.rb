@@ -1,5 +1,6 @@
 require 'test/unit'
 require 'json'
+require 'date'
 require_relative '../src/wordpress_result_transformer'
 
 class FakeUuidProvider
@@ -63,8 +64,8 @@ EOM
                 requests_done: "482",
                 db_update_finished: "",
                 version: "",
-                start_time: '2019-03-20 15:54:36 +0100',
-                end_time: '2019-03-20 15:54:41 +0100'
+                start_time: Time.at(1553093676),
+                end_time: Time.at(1553093681)
             }
         }]
     )
