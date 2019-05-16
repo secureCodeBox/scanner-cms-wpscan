@@ -22,7 +22,8 @@ get '/status' do
 	status 500
 	if client.healthy?
 		status 200
-	end
+  end
+	content_type :json
 	healthcheckClient.check(client)
 end
 
