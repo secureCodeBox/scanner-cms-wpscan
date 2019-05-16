@@ -46,10 +46,10 @@ To hand over supported parameters through api usage, you can set following attri
       "attributes": {
         "WP_STEALTHY": "true",
         "WP_ENUMERATE": "[Options]",
-        "WP_MAX_DURATION": [Seconds],
-        "WP_THROTTLE": [Milliseconds],
-        "WP_REQUEST_TIMEOUT": [Seconds],
-        "WP_DETECTION_MODE": [Options],
+        "WP_MAX_DURATION": "[Seconds]",
+        "WP_THROTTLE": "[Milliseconds]",
+        "WP_REQUEST_TIMEOUT": "[Seconds]",
+        "WP_DETECTION_MODE": "[Options]",
         "WP_USER_AGENT": "[userAgent]",
         "WP_HEADERS": "[headers]"
       }
