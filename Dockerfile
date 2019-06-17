@@ -2,11 +2,12 @@ FROM ruby:alpine
 
 WORKDIR /sectools
 ADD Gemfile /sectools
-ADD Gemfile.lock /sectools
 
 RUN apk --update add --virtual build-dependencies ruby-dev build-base &&\
     apk --update add curl &&\
-    gem install wpscan bundler &&\
+    apk --update add git
+
+RUN gem install wpscan bundler &&\
     bundle install &&\
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
@@ -16,7 +17,6 @@ COPY . /wpscan
 HEALTHCHECK --interval=30s --timeout=5s --start-period=120s --retries=3 CMD curl --fail http://localhost:8080/status || exit 1
 
 COPY src/ src/
-COPY lib/ lib/
 
 RUN addgroup --system wpscan && \
     adduser --system wpscan
