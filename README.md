@@ -18,7 +18,6 @@ To configure this service specify the following environment variables:
 | ENGINE_BASIC_AUTH_USER     | username      |
 | ENGINE_BASIC_AUTH_PASSWORD | 123456        |
 
-
 ### Local setup
 
 1. Clone the repository
@@ -58,31 +57,35 @@ To hand over supported parameters through api usage, you can set following attri
 ]
 ```
 
-Options for enumerate attribute:  
- Enumeration Process  
-              Available Choices:  
-               vp |  Vulnerable plugins  
-               ap |  All plugins  
-               p  |  Plugins  
-               vt |  Vulnerable themes  
-               at |  All themes  
-               t  |  Themes  
-               tt |  Timthumbs  
-               cb |  Config backups  
-               dbe |  Db exports  
-               u  |  User IDs range. e.g: u1-5  
-                    Range separator to use: '-'  
-                    Value if no argument supplied: 1-10  
-               m  |  Media IDs range. e.g m1-15  
-                    Note: Permalink setting must be set to "Plain" for those to be detected  
-                    Range separator to use: '-'  
-                    Value if no argument supplied: 1-100  
-              Separator to use between the values: ','  
-              Default: All Plugins, Config Backups  
-              Value if no argument supplied: vp,vt,tt,cb,dbe,u,m  
-              Incompatible choices (only one of each group/s can be used):  
-               - vp, ap, p  
-               - vt, at, t  
+Options for enumerate attribute:
+
+```txt
+Enumeration Process
+Available Choices:
+  vp  |  Vulnerable plugins
+  ap  |  All plugins
+  p   |  Plugins
+  vt  |  Vulnerable themes
+  at  |  All themes
+  t   |  Themes
+  tt  |  Timthumbs
+  cb  |  Config backups
+  dbe |  Db exports
+  u   |  User IDs range. e.g: u1-5
+         Range separator to use: '-'
+         Value if no argument supplied: 1-10
+  m   |  Media IDs range. e.g m1-15
+         Note: Permalink setting must be set to "Plain" for those to be detected
+         Range separator to use: '-'
+         Value if no argument supplied: 1-100
+
+Separator to use between the values: ','
+Default: All Plugins, Config Backups
+Value if no argument supplied: vp,vt,tt,cb,dbe,u,m
+Incompatible choices (only one of each group/s can be used):
+  - vp, ap, p
+  - vt, at, t
+```
 
 ## Build with docker
 
@@ -94,4 +97,3 @@ To build the docker container run:
 [scb-developer-guide]: https://github.com/secureCodeBox/secureCodeBox/blob/develop/docs/developer-guide/README.md
 [scb-developer-guidelines]: https://github.com/secureCodeBox/secureCodeBox/blob/develop/docs/developer-guide/README.md#guidelines
 [scb-user-guide]: https://github.com/secureCodeBox/secureCodeBox/tree/develop/docs/user-guide
-
