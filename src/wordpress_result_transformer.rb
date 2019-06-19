@@ -50,7 +50,7 @@ class WordpressResultTransformer
           name: vA.dig('title').split('-')[0],
           description: vA.dig('title').split('-')[1],
           category: '',
-          osi_layer: 'NETWORK',
+          osi_layer: 'APPLICATION',
           severity: severity,
           reference: {},
           hint: '',
