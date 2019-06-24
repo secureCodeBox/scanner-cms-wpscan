@@ -16,7 +16,7 @@ class WordpressResultTransformer
         name: 'CMS Wordpress',
         description: 'CMS Wordpress Information',
         category: 'CMS Wordpress',
-        osi_layer: 'NETWORK',
+        osi_layer: 'APPLICATION',
         severity: 'INFORMATIONAL',
         reference: {},
         hint: '',
@@ -30,26 +30,26 @@ class WordpressResultTransformer
         }
     }
     unless r.dig('version').nil? or r.dig('version').empty?
-      vulnerabilitiesToFindings(r.dig('version', 'vulnerabilities'), 'HIGH') unless r.dig('version', 'vulnerabilities').nil? or r.dig('version', 'vulnerabilities').empty?
+      vulnerabilitiesToFindings(r.dig('version', 'vulnerabilities'), 'HIGH', 'Core') unless r.dig('version', 'vulnerabilities').nil? or r.dig('version', 'vulnerabilities').empty?
     end
-    vulnerabilitiesToFindings(r.dig('main_theme', 'vulnerabilities'), 'INFORMATIONAL') unless r.dig('main_theme', 'vulnerabilities').nil? or r.dig('main_theme', 'vulnerabilities').empty?
+    vulnerabilitiesToFindings(r.dig('main_theme', 'vulnerabilities'), 'INFORMATIONAL', 'Theme') unless r.dig('main_theme', 'vulnerabilities').nil? or r.dig('main_theme', 'vulnerabilities').empty?
 
     unless r.dig('plugins').nil? or r.dig('plugins').empty?
       r.dig('plugins').each do |p|
-            vulnerabilitiesToFindings(p[1].dig('vulnerabilities'), 'INFORMATIONAL') unless p[1].dig('vulnerabilities').nil? or p[1].dig('vulnerabilities').empty?
+            vulnerabilitiesToFindings(p[1].dig('vulnerabilities'), 'INFORMATIONAL', 'Plugin') unless p[1].dig('vulnerabilities').nil? or p[1].dig('vulnerabilities').empty?
       end
     end
 
     @findings
   end
 
-  def vulnerabilitiesToFindings(vulnerabilityArray, severity)
+  def vulnerabilitiesToFindings(vulnerabilityArray, severity, category)
     vulnerabilityArray.each do |vA|
         @findings << {
           id: @uuid_provider.uuid,
           name: vA.dig('title').split('-')[0],
           description: vA.dig('title').split('-')[1],
-          category: '',
+          category: category,
           osi_layer: 'APPLICATION',
           severity: severity,
           reference: {},

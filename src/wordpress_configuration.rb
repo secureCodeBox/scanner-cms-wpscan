@@ -14,7 +14,7 @@ class WordpressConfiguration
     config = WordpressConfiguration.new
 
     enumerate = []
-    target.dig('attributes', 'WP_ENUMERATE').each { |_, flag| enumerate << flag unless flag.nil?  }
+    target.dig('attributes', 'WP_ENUMERATE').each { |_, flag| enumerate << flag unless flag.nil?  } unless !target.dig('attributes', 'WP_ENUMERATE')
 
     config.job_id = job_id
     config.wordpress_scanner_target = target.dig('location')
