@@ -32,11 +32,11 @@ class WordpressResultTransformer
     unless r.dig('version').nil? or r.dig('version').empty?
       vulnerabilitiesToFindings(r.dig('version', 'vulnerabilities'), 'HIGH', 'Core') unless r.dig('version', 'vulnerabilities').nil? or r.dig('version', 'vulnerabilities').empty?
     end
-    vulnerabilitiesToFindings(r.dig('main_theme', 'vulnerabilities'), 'INFORMATIONAL', 'Theme') unless r.dig('main_theme', 'vulnerabilities').nil? or r.dig('main_theme', 'vulnerabilities').empty?
+    vulnerabilitiesToFindings(r.dig('main_theme', 'vulnerabilities'), r.dig('main_theme', 'version').nil? ? 'LOW' : 'HIGH', 'Theme') unless r.dig('main_theme', 'vulnerabilities').nil? or r.dig('main_theme', 'vulnerabilities').empty?
 
     unless r.dig('plugins').nil? or r.dig('plugins').empty?
       r.dig('plugins').each do |p|
-            vulnerabilitiesToFindings(p[1].dig('vulnerabilities'), 'INFORMATIONAL', 'Plugin') unless p[1].dig('vulnerabilities').nil? or p[1].dig('vulnerabilities').empty?
+            vulnerabilitiesToFindings(p[1].dig('vulnerabilities'), r.dig('main_theme', 'version').nil? ? 'LOW' : 'HIGH', 'Plugin') unless p[1].dig('vulnerabilities').nil? or p[1].dig('vulnerabilities').empty?
       end
     end
 
@@ -47,8 +47,8 @@ class WordpressResultTransformer
     vulnerabilityArray.each do |vA|
         @findings << {
           id: @uuid_provider.uuid,
-          name: vA.dig('title').split('-')[0],
-          description: vA.dig('title').split('-')[1],
+          name: vA.dig('title').split('-')[0].strip,
+          description: vA.dig('title').split('-')[1].strip,
           category: category,
           osi_layer: 'APPLICATION',
           severity: severity,

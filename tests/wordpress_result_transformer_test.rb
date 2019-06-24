@@ -55,7 +55,7 @@ EOM
             name: 'CMS Wordpress',
             description: 'CMS Wordpress Information',
             category: 'CMS Wordpress',
-            osi_layer: 'NETWORK',
+            osi_layer: 'APPLICATION',
             severity: 'INFORMATIONAL',
             reference: {},
             hint: '',
