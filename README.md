@@ -5,11 +5,13 @@ category: "scanner"
 
 ---
 
+WPScan is a free, for non-commercial use, black box WordPress vulnerability scanner written for security professionals and blog maintainers to test the security of their sites.
+
+<!-- end -->
+
 # About
 
 This repository contains a self contained µService utilizing the WPScan scanner for the secureCodeBox project.
-
-<!-- end -->
 
 Further Documentation:
 
@@ -101,6 +103,10 @@ Incompatible choices (only one of each group/s can be used):
 To build the docker container run:
 
 `docker build -t IMAGE_NAME:LABEL .`
+
+[![Build Status](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan.svg?branch=develop)](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![GitHub release](https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan.svg)](https://github.com/secureCodeBox/scanner-cms-wpscan/releases/latest)
 
 [scb-project]: https://github.com/secureCodeBox/secureCodeBox
 [scb-developer-guide]: https://github.com/secureCodeBox/secureCodeBox/blob/develop/docs/developer-guide/README.md
