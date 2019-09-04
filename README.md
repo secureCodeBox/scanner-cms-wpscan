@@ -2,6 +2,7 @@
 title: "WPscan"
 path: "scanner/WPscan"
 category: "scanner"
+usecase: "Content Management System"
 
 ---
 
