@@ -1,5 +1,5 @@
 ---
-title: "WPscan"
+title: "WPScan"
 path: "scanner/WPscan"
 category: "scanner"
 usecase: "Content Management System"
