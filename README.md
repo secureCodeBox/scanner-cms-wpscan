@@ -3,6 +3,7 @@ title: "WPScan"
 path: "scanner/WPScan"
 category: "scanner"
 usecase: "Wordpress Vulnerability Scanner"
+release: "https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan.svg"
 
 ---
 
