@@ -1,8 +1,8 @@
 ---
 title: "WPScan"
-path: "scanner/WPscan"
+path: "scanner/WPScan"
 category: "scanner"
-usecase: "Content Management System"
+usecase: "Wordpress Vulnerability Scanner"
 
 ---
 
