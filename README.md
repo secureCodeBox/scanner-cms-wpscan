@@ -7,41 +7,15 @@ release: "https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan
 
 ---
 
+![WPScan Logo](https://raw.githubusercontent.com/wpscanteam/wpscan/gh-pages/images/wpscan_logo.png)
+
 WPScan is a free, for non-commercial use, black box WordPress vulnerability scanner written for security professionals and blog maintainers to test the security of their sites.
 
 <!-- end -->
 
 # About
 
-This repository contains a self contained µService utilizing the WPScan scanner for the secureCodeBox project.
-
-Further Documentation:
-
-- [Project Description][scb-project]
-- [Developer Guide][scb-developer-guide]
-- [User Guide][scb-user-guide]
-
-## Configuration Options
-
-To configure this service specify the following environment variables:
-
-| Environment Variable       | Value Example |
-| -------------------------- | ------------- |
-| ENGINE_ADDRESS             | http://engine |
-| ENGINE_BASIC_AUTH_USER     | username      |
-| ENGINE_BASIC_AUTH_PASSWORD | 123456        |
-
-### Local setup
-
-1. Clone the repository
-2. You might need to install some dependencies `gem install sinatra rest-client`
-3. Run locally `ruby src/main.rb`
-
-### Test
-
-To run the testsuite run:
-
-`rake test`
+This repository contains a self contained µService utilizing the WPScan scanner for the secureCodeBox project. To learn more about the WPScan scanner itself visit [wpscan.org] or [wpscan.io]. 
 
 ## WpScan Parameters
 
@@ -56,12 +30,12 @@ To hand over supported parameters through api usage, you can set following attri
       "name": "targetName",
       "location": "http://your-target.com/",
       "attributes": {
-        "WP_STEALTHY": "true",
+        "WP_STEALTHY": "[true | false]",
         "WP_ENUMERATE": "[Options]",
-        "WP_MAX_DURATION": "[Seconds]",
-        "WP_THROTTLE": "[Milliseconds]",
-        "WP_REQUEST_TIMEOUT": "[Seconds]",
-        "WP_DETECTION_MODE": "[Options]",
+        "WP_MAX_DURATION": "[seconds]",
+        "WP_THROTTLE": "[milliseconds]",
+        "WP_REQUEST_TIMEOUT": "[seconds]",
+        "WP_DETECTION_MODE": "[mixed | aggressive | passive]",
         "WP_USER_AGENT": "[userAgent]",
         "WP_HEADERS": "[headers]"
       }
@@ -100,17 +74,43 @@ Incompatible choices (only one of each group/s can be used):
   - vt, at, t
 ```
 
-## Build with docker
+## Example
+Since we currently do not provide a Wordpress test-site we have no example to offer.
+
+## Configuration Options
+
+To configure this service specify the following environment variables:
+
+| Environment Variable       | Value Example |
+| -------------------------- | ------------- |
+| ENGINE_ADDRESS             | http://engine |
+| ENGINE_BASIC_AUTH_USER     | username      |
+| ENGINE_BASIC_AUTH_PASSWORD | 123456        |
+
+### Local setup
+
+1. Clone the repository
+2. You might need to install some dependencies `gem install sinatra rest-client`
+3. Run locally `ruby src/main.rb`
+
+### Test
+
+To run the testsuite run:
+
+`rake test`
+
+### Build with docker
 
 To build the docker container run:
 
 `docker build -t IMAGE_NAME:LABEL .`
 
-[![Build Status](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan.svg?branch=develop)](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan)
+
+[![Build Status](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan.svg?branch=master)](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![GitHub release](https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan.svg)](https://github.com/secureCodeBox/scanner-cms-wpscan/releases/latest)
 
-[scb-project]: https://github.com/secureCodeBox/secureCodeBox
-[scb-developer-guide]: https://github.com/secureCodeBox/secureCodeBox/blob/develop/docs/developer-guide/README.md
+
+[wpscan.io]: https://wpscan.io/
+[wpscan.org]: https://wpscan.org/
 [scb-developer-guidelines]: https://github.com/secureCodeBox/secureCodeBox/blob/develop/docs/developer-guide/README.md#guidelines
-[scb-user-guide]: https://github.com/secureCodeBox/secureCodeBox/tree/develop/docs/user-guide
