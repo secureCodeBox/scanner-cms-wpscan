@@ -17,7 +17,7 @@ WPScan is a free, for non-commercial use, black box WordPress vulnerability scan
 
 This repository contains a self contained µService utilizing the WPScan scanner for the secureCodeBox project. To learn more about the WPScan scanner itself visit [wpscan.org] or [wpscan.io]. 
 
-## WpScan Parameters
+## WPScan parameters
 
 To hand over supported parameters through api usage, you can set following attributes:
 
@@ -77,7 +77,9 @@ Incompatible choices (only one of each group/s can be used):
 ## Example
 Since we currently do not provide a Wordpress test-site we have no example to offer.
 
-## Configuration Options
+## Development
+
+### Configuration Options
 
 To configure this service specify the following environment variables:
 
@@ -113,4 +115,3 @@ To build the docker container run:
 
 [wpscan.io]: https://wpscan.io/
 [wpscan.org]: https://wpscan.org/
-[scb-developer-guidelines]: https://github.com/secureCodeBox/secureCodeBox/blob/develop/docs/developer-guide/README.md#guidelines
