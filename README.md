@@ -102,20 +102,22 @@ Example Output:
 {
   "findings": [
     {
-      "name": "Credentials for Service ssh://192.168.0.1:22 discovered via bruteforce.",
-      "description": "",
-      "location": "ssh://192.168.0.1:22",
-      "category": "Discovered Credentials",
-      "severity": "HIGH",
+      "id": "e132b47a-9f2c-41cd-be9b-95dc948a8bd3",
+      "name": "CMS Wordpress",
+      "description": "CMS Wordpress Information",
+      "category": "CMS Wordpress",
       "osi_layer": "APPLICATION",
+      "severity": "INFORMATIONAL",
+      "reference": {},
       "attributes": {
-        "username": "root",
-        "password": "123456",
-        "ip_address": "192.168.0.1",
-        "port": "22",
-        "protocol": "tcp",
-        "service": "ssh"
-      }
+        "requests_done": "23",
+        "db_update_finished": "",
+        "version": "4.0.29",
+        "start_time": "2020-01-16 15:05:08 +0000",
+        "end_time": "2020-01-16 15:05:14 +0000"
+      },
+      "location": "http://wordpress.example.com",
+      "false_positive": false
     }
   ]
 }
