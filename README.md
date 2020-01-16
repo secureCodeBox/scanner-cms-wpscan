@@ -1,21 +1,22 @@
 ---
-title: "WPScan"
-path: "scanner/WPScan"
-category: "scanner"
-usecase: "Wordpress Vulnerability Scanner"
-release: "https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan.svg"
-
+title: 'WPScan'
+path: 'scanner/WPScan'
+category: 'scanner'
+usecase: 'Wordpress Vulnerability Scanner'
+release: 'https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan.svg'
 ---
 
 ![WPScan Logo](https://raw.githubusercontent.com/wpscanteam/wpscan/gh-pages/images/wpscan_logo.png)
 
 WPScan is a free, for non-commercial use, black box WordPress vulnerability scanner written for security professionals and blog maintainers to test the security of their sites.
 
+> NOTE: You need to provide WPSan with an API Token so that it can look up vulnerabilities infos with https://wpvulndb.com. Without the token WPScan will only identify Wordpress Core / Plugin / Theme versions but not if they are actually vulnerable. You can get a free API Token at by registering for an account at https://wpvulndb.com. Using the secureCodeBox WPScans you can specify the token via the `WPVULNDB_API_TOKEN` target attribute, see the example below.
+
 <!-- end -->
 
 # About
 
-This repository contains a self contained µService utilizing the WPScan scanner for the secureCodeBox project. To learn more about the WPScan scanner itself visit [wpscan.org] or [wpscan.io]. 
+This repository contains a self contained µService utilizing the WPScan scanner for the secureCodeBox project. To learn more about the WPScan scanner itself visit [wpscan.org] or [wpscan.io].
 
 ## WPScan parameters
 
@@ -31,6 +32,7 @@ To hand over supported parameters through api usage, you can set following attri
       "location": "http://your-target.com/",
       "attributes": {
         "WP_STEALTHY": "[true | false]",
+        "WPVULNDB_API_TOKEN": "[wpvulndb.com api token]",
         "WP_ENUMERATE": "[Options]",
         "WP_MAX_DURATION": "[seconds]",
         "WP_THROTTLE": "[milliseconds]",
@@ -75,7 +77,49 @@ Incompatible choices (only one of each group/s can be used):
 ```
 
 ## Example
-Since we currently do not provide a Wordpress test-site we have no example to offer.
+
+Example configuration: (Note that the token isn't actually real 😉)
+
+```json
+[
+  {
+    "name": "wpscan",
+    "context": "Example WPScan",
+    "target": {
+      "name": "Local Wordpress",
+      "location": "http://wordpress.example.com",
+      "attributes": {
+        "WPVULNDB_API_TOKEN": "RVR4GztDG4sZdfYUVsvyX7fGHvFZMXa7plbsoRHssvq"
+      }
+    }
+  }
+]
+```
+
+Example Output:
+
+```json
+{
+  "findings": [
+    {
+      "name": "Credentials for Service ssh://192.168.0.1:22 discovered via bruteforce.",
+      "description": "",
+      "location": "ssh://192.168.0.1:22",
+      "category": "Discovered Credentials",
+      "severity": "HIGH",
+      "osi_layer": "APPLICATION",
+      "attributes": {
+        "username": "root",
+        "password": "123456",
+        "ip_address": "192.168.0.1",
+        "port": "22",
+        "protocol": "tcp",
+        "service": "ssh"
+      }
+    }
+  ]
+}
+```
 
 ## Development
 
@@ -107,11 +151,9 @@ To build the docker container run:
 
 `docker build -t IMAGE_NAME:LABEL .`
 
-
 [![Build Status](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan.svg?branch=master)](https://travis-ci.com/secureCodeBox/scanner-cms-wpscan)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![GitHub release](https://img.shields.io/github/release/secureCodeBox/scanner-cms-wpscan.svg)](https://github.com/secureCodeBox/scanner-cms-wpscan/releases/latest)
-
 
 [wpscan.io]: https://wpscan.io/
 [wpscan.org]: https://wpscan.org/
