@@ -38,14 +38,15 @@ class WordpressConfigurationTest < Test::Unit::TestCase
             "WP_REQUEST_TIMEOUT" => nil,
             "WP_DETECTION_MODE" => nil,
             "WP_USER_AGENT" => nil,
-            "WP_HEADERS" => nil
+            "WP_HEADERS" => nil,
+            "WPVULNDB_API_TOKEN" => "foobar",
         }
     }
     config = WordpressConfiguration.from_target "49bf7fd3-8512-4d73-a28f-608e493cd726", target
 
     assert_equal(
         config.wordpress_configuration,
-        "--enumerate vp,vt,tt,cb,dbe,u1-10,m1-100 "
+        "--enumerate vp,vt,tt,cb,dbe,u1-10,m1-100 --api-token foobar ",
     )
   end
 end

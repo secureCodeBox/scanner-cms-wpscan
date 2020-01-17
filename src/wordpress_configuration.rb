@@ -27,6 +27,7 @@ class WordpressConfiguration
     config.wordpress_configuration += "--detection-mode #{target.dig('attributes', 'WP_DETECTION_MODE')} " unless !target.dig('attributes', 'WP_DETECTION_MODE')
     config.wordpress_configuration += "--ua #{target.dig('attributes', 'WP_USER_AGENT')} " unless !target.dig('attributes', 'WP_USER_AGENT')
     config.wordpress_configuration += "--headers #{target.dig('attributes', 'WP_HEADERS')} " unless !target.dig('attributes', 'WP_HEADERS')
+    config.wordpress_configuration += "--api-token #{target.dig('attributes', 'WPVULNDB_API_TOKEN')} " unless !target.dig('attributes', 'WPVULNDB_API_TOKEN')
 
 
     config

@@ -51,4 +51,4 @@ LABEL org.opencontainers.image.title="secureCodeBox scanner-webserver-wordpress"
     org.opencontainers.image.revision=$COMMIT_ID \
     org.opencontainers.image.created=$BUILD_DATE
 
-ENTRYPOINT ["ruby","/sectools/src/main.rb"]
+ENTRYPOINT ["bundle","exec","ruby","/sectools/src/main.rb"]
