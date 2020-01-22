@@ -7,7 +7,7 @@ RUN apk --update add --virtual build-dependencies ruby-dev build-base &&\
     apk --update add curl &&\
     apk --update add git
 
-RUN gem install wpscan bundler &&\
+RUN gem install bundler &&\
     bundle install &&\
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*
