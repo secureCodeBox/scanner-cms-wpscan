@@ -83,7 +83,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
-    wpscan (3.7.6)
+    wpscan (3.7.7)
       cms_scanner (~> 0.8.1)
     xmlrpc (0.3.0)
     yajl-ruby (1.4.1)
@@ -97,7 +97,7 @@ DEPENDENCIES
   rest-client
   ruby-scanner-scaffolding!
   sinatra
-  wpscan (= 3.7.6)
+  wpscan (= 3.7.7)
 
 BUNDLED WITH
    2.1.4
