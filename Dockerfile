@@ -39,6 +39,8 @@ ENV SCB_COMMIT_ID ${COMMIT_ID}
 ENV SCB_REPOSITORY_URL ${REPOSITORY_URL}
 ENV SCB_BRANCH ${BRANCH}
 
+ENV WPSCAN_VERSION "3.7.7"
+
 LABEL org.opencontainers.image.title="secureCodeBox scanner-webserver-wordpress" \
     org.opencontainers.image.description="Wordpress_Scan integration for secureCodeBox" \
     org.opencontainers.image.authors="iteratec GmbH" \

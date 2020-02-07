@@ -35,4 +35,12 @@ class WordpressWorker < CamundaWorker
 				scannerType: 'wordpress'
 		}
 	end
+
+	def version
+		if ENV.key? 'WPSCAN_VERSION'
+			ENV["WPSCAN_VERSION"]
+		else
+			"unkown"
+		end
+	end
 end
