@@ -29,7 +29,6 @@ class WordpressConfiguration
     config.wordpress_configuration += "--headers #{target.dig('attributes', 'WP_HEADERS')} " unless !target.dig('attributes', 'WP_HEADERS')
     config.wordpress_configuration += "--api-token #{target.dig('attributes', 'WPVULNDB_API_TOKEN')} " unless !target.dig('attributes', 'WPVULNDB_API_TOKEN')
 
-
     config
   end
 end
