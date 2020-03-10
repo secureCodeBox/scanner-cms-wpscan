@@ -6,7 +6,7 @@ require 'pathname'
 require_relative './wordpress_result_transformer'
 
 $logger = Logger.new(STDOUT)
-$logger.level = ENV.key? 'DEBUG' ? Logger::DEBUG : Logger::INFO
+$logger.level = ENV.key?('DEBUG') ? Logger::DEBUG : Logger::INFO
 
 class WordpressScan
 	attr_reader :raw_results
